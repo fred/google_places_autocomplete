@@ -1,0 +1,12 @@
+*~
+*.log
+log/
+tmp/
+database.yml
+.DS_Store
+db/*.sql
+db/*.lzma
+.rvmrc
+vendor/bundle
+pids/*.pid
+db/*.sqlite3
