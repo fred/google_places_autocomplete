@@ -1,0 +1,62 @@
+
+<%= form_for(@location) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field search">
+    <%= label_tag :search %>
+    <%= text_field_tag :location_search, nil, :size => 60 %>
+  </div>
+
+  <br />
+  
+  <div class="field">
+    <%= f.label :address, "Full Address" %>
+    <%= f.text_field :address, :size => 60 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :location_name %>
+    <%= f.text_field :location_name, :size => 18 %>
+    
+    <%= f.label :phone_number %> 
+    <%= f.text_field :phone_number, :size => 18 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :district %>
+    <%= f.text_field :district, :size => 18 %>
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode, :size => 6, :type => 'number' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city, :size => 18 %>
+    
+    <%= f.label :country %> 
+    <%= f.text_field :country, :size => 18 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :lat %>
+    <%= f.text_field :lat, :size=> 18 %>
+    <%= f.label :lng %>
+    <%= f.text_field :lng, :size=> 18 %>
+  </div>
+  
+  <%= render :partial => "googlemap" %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
