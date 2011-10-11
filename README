@@ -1,8 +1,9 @@
 Rails 3.1.1 app with the google places api for address autocomplete. 
 
-Installation 1-2-3 steps
+Installation steps
 
-1. bundler install
-2. rake db:migrate
-3. rails server
+1. Create config/database.yml (see config/database.yml.sample)
+2. bundler install
+3. rake db:migrate
+4. rails server
 
