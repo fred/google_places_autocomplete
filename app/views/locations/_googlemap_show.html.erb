@@ -13,7 +13,9 @@
   var mapOptions = {
     center: new google.maps.LatLng(lat, lng),
     zoom: defaultZoom,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    scrollwheel: false,
+    scaleControl: false
   };
   var map = new google.maps.Map(document.getElementById('map'),mapOptions);
 

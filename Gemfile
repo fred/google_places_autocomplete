@@ -1,9 +1,10 @@
 source 'http://rubygems.org'
 
 ### Basic
-gem 'rake' 
-gem 'rails', '3.1.4'
-gem 'bundler', '>= 1.1.0'
+gem 'rack'
+gem 'rake'
+gem 'rails', '3.2.8'
+gem 'bundler'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,15 +12,13 @@ gem 'bundler', '>= 1.1.0'
 gem 'sqlite3'
 
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
-  gem "libv8"
-  gem "execjs"
-  gem "therubyracer", :require => 'v8'
-  gem 'sass-rails',   '3.1.5'
-  gem 'coffee-rails', '3.1.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass', '~> 3.1.21'
+  gem 'sass-rails'
+  gem 'therubyracer', require: 'v8',    platform: :mri_19
+  gem 'execjs'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.2.5'
 end
 
 gem 'jquery-rails'
