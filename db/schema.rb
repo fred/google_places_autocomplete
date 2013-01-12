@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20111009123625) do
     t.string   "country"
     t.decimal  "lat",           :precision => 16, :scale => 13
     t.decimal  "lng",           :precision => 16, :scale => 13
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
 end
