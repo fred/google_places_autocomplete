@@ -1,21 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>GooglePlacesAutocomplete</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<div id="container">
-  <%= yield %>
-</div>
+  <div class="container-fluid">
 
-<div class="footer">
-  <a href="https://github.com/fred/google_places_autocomplete" class="footer">
-  Source at Github
-  </a>
-</div>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="/">Google Places Autocomplete</a>
+        <ul class="nav">
+          <li class="<%= active_for('new') %>"><%= link_to "Location Demo", new_location_path %></li>
+          <li class="<%= active_for('index') %>"><%= link_to "Stored Locations", locations_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Source Code", "https://github.com/fred/google_places_autocomplete", target: 'blank' %></li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="https://github.com/fred/google_places_autocomplete">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
+    </a>
+    <div class="row-fluid">
+      <div class='flash'>
+        <%= bootstap_flash %>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+
 </body>
 </html>

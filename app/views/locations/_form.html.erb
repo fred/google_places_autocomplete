@@ -1,62 +1,95 @@
+<%= form_for(@location, html: { class: "form-horizontal" }) do |f| %>
 
-<%= form_for(@location) do |f| %>
-  <% if @location.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+<fieldset>
+  <legend>Create Location</legend>
 
-      <ul>
-      <% @location.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row-fluid">
+
+    <div class="span5">
+
+      <div class="control-group">
+        <%= f.label :address, "Address", class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :address, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :location_name, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :location_name, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :phone_number, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :phone_number, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :district, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :district, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :postcode, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :postcode, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :city, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :city, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :country, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :country, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :lat, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :lat, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :lng, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :lng, class: "span12" %>
+        </div>
+      </div>
+      <div class="control-group pull-right">
+        <%= f.submit "Save Location", class: 'btn' %>
+      </div>
     </div>
-  <% end %>
-  
-  <div class="field search">
-    <%= label_tag :search %>
-    <%= text_field_tag :location_search, nil, :size => 60, :type => "search" %>
-  </div>
 
-  <br />
-  
-  <div class="field">
-    <%= f.label :address, "Full Address" %>
-    <%= f.text_field :address, :size => 60 %>
+    <div class="span7">
+      <% if @location.errors.any? %>
+        <div class="notice">
+          <h3>Errors</h2>
+          <ul>
+          <% @location.errors.full_messages.each do |msg| %>
+            <li class="error"><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="control-group">
+        <%= label_tag :search, "Search For Address" %>
+        <%= text_field_tag :location_search, nil, class: "span12 search-query", type: "search" %>
+      </div>
+      <%= render partial: "googlemap" %>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :location_name %>
-    <%= f.text_field :location_name, :size => 18 %>
-    
-    <%= f.label :phone_number %> 
-    <%= f.text_field :phone_number, :size => 18 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :district %>
-    <%= f.text_field :district, :size => 18 %>
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode, :size => 6, :type => 'number' %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :city %>
-    <%= f.text_field :city, :size => 18 %>
-    
-    <%= f.label :country %> 
-    <%= f.text_field :country, :size => 18 %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :lat %>
-    <%= f.text_field :lat, :size=> 18 %>
-    <%= f.label :lng %>
-    <%= f.text_field :lng, :size=> 18 %>
-  </div>
-  
-  <%= render :partial => "googlemap" %>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</fieldset>
 <% end %>
+
+<div class="row-fluid">
+  <div class="well span12">
+    <h4>Images</h4>
+    <div id="place_images"></div>
+  </div>
+</div>

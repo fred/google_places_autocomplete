@@ -1,33 +1,33 @@
-<h1>Listing locations</h1>
+<div class="span11">
+  <h3>Listing locations</h3>
 
-<table cellspacing=0>
-  <tr>
-    <th>Address</th>
-    <th>City</th>
-    <th>Postcode</th>
-    <th>Country</th>
-    <th>Lat</th>
-    <th>Lng</th>
-  </tr>
+  <table class="table table-striped">
+    <tr>
+      <th>Address</th>
+      <th>City</th>
+      <th>Postcode</th>
+      <th>Country</th>
+      <th>Lat</th>
+      <th>Lng</th>
+    </tr>
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= link_to location.address, location %></td>
-    <td><%= link_to location.city, location %></td>
-    <td><%= location.postcode %></td>
-    <td><%= location.country %></td>
-    <td><%= location.lat %></td>
-    <td><%= location.lng %></td>
-  </tr>
-<% end %>
-</table>
+  <% @locations.each do |location| %>
+    <tr>
+      <td><%= link_to location.address, location %></td>
+      <td><%= link_to location.city, location %></td>
+      <td><%= location.postcode %></td>
+      <td><%= location.country %></td>
+      <td><%= location.lat %></td>
+      <td><%= location.lng %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<br />
+  <br />
+  <%= link_to 'New Location', new_location_path %>
+  <br />
 
-<%= link_to 'New Location', new_location_path %>
-
-<br />
-
-<div class="pagination">
-  <%= paginate @locations %>
+  <div class="pagination">
+    <%= paginate @locations %>
+  </div>
 </div>

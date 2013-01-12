@@ -1,4 +1,4 @@
-<div id="map" style="width: 100%; height: 400px"></div>
+<div id="googlemap"></div>
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places" type="text/javascript"></script>
 
@@ -10,9 +10,11 @@
   var mapOptions = {
     center: new google.maps.LatLng(13.731547730050778, 100.56798934936523),
     zoom: defaultZoom,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    scrollwheel: false,
+    scaleControl: false
   };
-  var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+  var map = new google.maps.Map(document.getElementById('googlemap'),mapOptions);
 	
 	// I'm Centering the map in Bangkok
 	// '13.731547730050778'
@@ -22,29 +24,29 @@
 	if (jQuery.isEmptyObject(mylat)) {
 	  var mylat = '13.731548';
 	  var mylng = '100.56799';
-	  var defaultZoom = 14; // decrease zoom to 13 if there is no selection from user.
+	  var defaultZoom = 14;
 	};
 
 	// set center point of map to be of the Marker or the Default City
   var centrePoint = new google.maps.LatLng(mylat, mylng);
-  
   map.setCenter(centrePoint);
   map.setZoom(defaultZoom); 
 	
 	// add a draggable marker
   marker = new google.maps.Marker({
-    map:map,
-    draggable:true,
+    map: map,
+    draggable: true,
     animation: google.maps.Animation.DROP,
     position: centrePoint
   });
+
   var defaultImage = new google.maps.MarkerImage(
       "http://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
       new google.maps.Size(71, 71),
       new google.maps.Point(0, 0),
       new google.maps.Point(17, 34),
       new google.maps.Size(35, 35));
-	marker.setIcon(defaultImage);
+  marker.setIcon(defaultImage);
 	
   google.maps.event.addListener(marker, 'click', toggleBounce);
 	
@@ -65,10 +67,12 @@
 		infowindow.close();
     marker.setIcon(defaultImage);
   });
-  
+  var place;
+  var photos;
+
   // Autocomplete Listener
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    var place = autocomplete.getPlace();
+    place = autocomplete.getPlace();
     marker.setPosition(place.geometry.location);
     map.panTo(place.geometry.location);
     map.setZoom(16);
@@ -101,24 +105,59 @@
     
     // Autofill the fields in the form. TODO: improve parsing of the returned JSON data.
     var address = place.address_components;
-    var zipcode = address[address.length - 1].long_name;
-    var country = address[address.length - 2].long_name;
-    var city = address[address.length - 3].long_name;
-    var sublocality = address[address.length - 4].long_name;
-    var streetname = address[0].long_name;
-    
-    var location_name = place.name;
+    var website = place.url;
+
+    if (address[address.length - 1]) {
+      var zipcode = address[address.length - 1].long_name;
+    };
+    if (address[address.length - 2]) {
+      var country = address[address.length - 2].long_name;
+    };
+    if (address[address.length - 3]) {
+      var city = address[address.length - 3].long_name;
+    };
+    if (address[address.length - 4]) {
+      var sublocality = address[address.length - 4].long_name;
+    };
+    if (address[0]) {
+      var streetnumber = address[0].long_name;
+    };
+    if (address[1]) {
+      var streetname = address[1].long_name;
+    };
+    if (place.name) {
+      var location_name = place.name;
+    }
     var formatted_address = place.formatted_address;
     var formatted_phone_number = place.formatted_phone_number;
     
-    document.getElementById("location_postcode").value = zipcode;
-    document.getElementById("location_city").value = city;
-    document.getElementById("location_country").value = country;
-    document.getElementById("location_district").value = sublocality;
-    document.getElementById("location_address").value = formatted_address;
-    document.getElementById("location_location_name").value = location_name;
-    document.getElementById("location_phone_number").value = formatted_phone_number;
-
+    if (zipcode){
+      document.getElementById("location_postcode").value = zipcode;
+    }
+    if (city) {
+      document.getElementById("location_city").value = city;
+    }
+    if (country) {
+      document.getElementById("location_country").value = country;
+    }
+    if (sublocality) {
+      document.getElementById("location_district").value = sublocality;
+    }
+    if (streetname) {
+      document.getElementById("location_address").value = streetname;
+    }
+    if (location_name) {
+      document.getElementById("location_location_name").value = location_name;
+    }
+    if (formatted_phone_number) {
+      document.getElementById("location_phone_number").value = formatted_phone_number;
+    }
+    photos = place.photos;
+    $('#place_images').empty();
+    for (var i = 0; i < photos.length; i++) {
+      var url = photos[i].raw_reference.fife_url;
+      $('#place_images').prepend('<img src="' + url + '"/>');
+    }
   });
   
   // This is the function to animate the marker after dropping it.

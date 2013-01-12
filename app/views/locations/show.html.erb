@@ -1,37 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="span11">
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
 
-<p>
-  <b>Address:</b>
-  <%= @location.address %>
-</p>
+  <p>
+    <b>Address:</b>
+    <%= @location.address %>
+  </p>
 
-<p>
-  <b>City:</b>
-  <%= @location.city %>
-</p>
+  <p>
+    <b>City:</b>
+    <%= @location.city %>
+  </p>
 
-<p>
-  <b>Postcode:</b>
-  <%= @location.postcode %>
-</p>
+  <p>
+    <b>Postcode:</b>
+    <%= @location.postcode %>
+  </p>
 
-<p>
-  <b>Country:</b>
-  <%= @location.country %>
-</p>
+  <p>
+    <b>Country:</b>
+    <%= @location.country %>
+  </p>
 
-<p>
-  <b>Lat:</b>
-  <span id="location_lat"><%= @location.lat %></span>
-</p>
+  <p>
+    <b>Lat:</b>
+    <span id="location_lat"><%= @location.lat %></span>
+  </p>
 
-<p>
-  <b>Lng:</b>
-  <span id="location_lng"><%= @location.lng %></span>
-</p>
+  <p>
+    <b>Lng:</b>
+    <span id="location_lng"><%= @location.lng %></span>
+  </p>
 
-<%= render :partial => "googlemap_show" %>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
-
+  <%= render :partial => "googlemap_show" %>
+</div>

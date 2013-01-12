@@ -1,4 +1,11 @@
 ---
-!binary "cmFpbHMucG5n": rails-e4b51606cd77fda2615e7439907bfc92.png
-!binary "YXBwbGljYXRpb24uanM=": application-12051da05dcdb5ad77d6217df3c7bb1c.js
-!binary "YXBwbGljYXRpb24uY3Nz": application-67303b914a4a18871dcbee683c3e1d17.css
+rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
+rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
+application.js: application-d92c4adf11d44dbcc04d2c505627d956.js
+application/index.js: application-d92c4adf11d44dbcc04d2c505627d956.js
+application.css: application-d1b9ecbd05470760f71d178648403291.css
+application/index.css: application-d1b9ecbd05470760f71d178648403291.css
+glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
+glyphicons-halflings-white/index.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
+glyphicons-halflings.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
+glyphicons-halflings/index.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
