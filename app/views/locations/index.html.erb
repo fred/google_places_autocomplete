@@ -9,6 +9,7 @@
       <th>Country</th>
       <th>Lat</th>
       <th>Lng</th>
+      <th>Date</th>
     </tr>
 
   <% @locations.each do |location| %>
@@ -19,6 +20,7 @@
       <td><%= location.country %></td>
       <td><%= location.lat %></td>
       <td><%= location.lng %></td>
+      <td><%= location.created_at.to_s(:short) %></td>
     </tr>
   <% end %>
   </table>

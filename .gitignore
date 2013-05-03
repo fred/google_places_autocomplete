@@ -10,3 +10,4 @@ db/*.lzma
 vendor/bundle
 pids/*.pid
 db/*.sqlite3
+.ruby-version

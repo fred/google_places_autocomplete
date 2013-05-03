@@ -1,3 +1,11 @@
+## May 03, 2013
+
+  - Fixed Image URL method for new places API
+  - Minor CSS tweak
+  - Updated to Rails 3.2.13
+  - Updated to twitter-bootstrap-sass
+  - jQuery 1.9.1
+
 ## Jan 12, 2013
 
   - Updated to rails 3.2.11

@@ -155,7 +155,7 @@
     photos = place.photos;
     $('#place_images').empty();
     for (var i = 0; i < photos.length; i++) {
-      var url = photos[i].raw_reference.fife_url;
+      var url = photos[i].getUrl({maxHeight: "1280", maxWidth: "1280"});
       $('#place_images').prepend('<img src="' + url + '"/>');
     }
   });
